@@ -1,0 +1,21 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="202404121531-1" author="traczlu1">
+
+       <sql>
+
+           insert into users (login, password) values ('traczlu1', 'traczlu1');
+           insert into users (login, password) values ('admin', 'admin');
+
+           insert into role (name) values ('default');
+           insert into role (name) values ('admin');
+
+           insert into user_role (user_id, role_id) values ((select u.id from users u where login = 'traczlu1'), (select r.id from role r where name = 'default'));
+           insert into user_role (user_id, role_id) values ((select u.id from users u where login = 'admin'), (select r.id from role r where name = 'default'));
+           insert into user_role (user_id, role_id) values ((select u.id from users u where login = 'admin'), (select r.id from role r where name = 'admin'));
+
+       </sql>
+
+    </changeSet>
+
+</databaseChangeLog>

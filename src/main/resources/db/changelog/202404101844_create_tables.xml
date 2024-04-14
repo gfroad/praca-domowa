@@ -8,9 +8,11 @@
             </column>
             <column name="name" type="text"/>
             <column name="type" type="text"/>
+            <column name="description" type="text"/>
+            <column name="size" type="int"/>
         </createTable>
 
-        <createTable tableName="user">
+        <createTable tableName="users">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
@@ -29,7 +31,7 @@
             <column name="role_id" type="bigint"/>
         </createTable>
 
-        <addForeignKeyConstraint baseTableName="user_role" baseColumnNames="user_id" constraintName="user_id_k" referencedTableName="user" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="user_role" baseColumnNames="user_id" constraintName="user_id_k" referencedTableName="users" referencedColumnNames="id"/>
         <addForeignKeyConstraint baseTableName="user_role" baseColumnNames="role_id" constraintName="role_id_k" referencedTableName="role" referencedColumnNames="id"/>
 
     </changeSet>

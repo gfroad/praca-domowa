@@ -1,4 +1,4 @@
-package com.example.pracadomowa.controller.model;
+package com.example.pracadomowa.controller.model.orangeobject;
 
 import com.example.pracadomowa.domain.OrangeObject;
 import com.example.pracadomowa.enums.ObjectType;

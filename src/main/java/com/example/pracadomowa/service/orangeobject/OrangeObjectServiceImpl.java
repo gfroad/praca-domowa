@@ -1,12 +1,12 @@
-package com.example.pracadomowa.service;
+package com.example.pracadomowa.service.orangeobject;
 
 import com.example.pracadomowa.domain.OrangeObject;
-import com.example.pracadomowa.service.dto.OrangeObjectCreateDto;
-import com.example.pracadomowa.service.dto.OrangeObjectUpdateDto;
+import com.example.pracadomowa.repository.OrangeObjectRepository;
+import com.example.pracadomowa.service.orangeobject.dto.OrangeObjectCreateDto;
+import com.example.pracadomowa.service.orangeobject.dto.OrangeObjectUpdateDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.example.pracadomowa.repository.OrangeObjectRepository;
 
 import java.util.List;
 import java.util.Optional;

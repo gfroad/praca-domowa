@@ -2,7 +2,7 @@
 
 
     <include file="classpath:db/changelog/202404101844_create_tables.xml" relativeToChangelogFile="false" />
-    <include file="classpath:db/changelog/202404121531_add_columns_to_oragneobject_table.xml" relativeToChangelogFile="false" />
+    <include file="classpath:db/changelog/202404121531_create_users_and_roles.xml" relativeToChangelogFile="false" />
 
 
 </databaseChangeLog>

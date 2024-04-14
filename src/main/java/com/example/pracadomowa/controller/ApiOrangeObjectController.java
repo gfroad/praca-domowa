@@ -1,11 +1,11 @@
 package com.example.pracadomowa.controller;
 
-import com.example.pracadomowa.controller.model.OrangeObjectCreateRequest;
-import com.example.pracadomowa.controller.model.OrangeObjectUpdateRequest;
-import com.example.pracadomowa.service.OrangeObjectService;
-import com.example.pracadomowa.controller.model.OrangeObjectResponse;
-import com.example.pracadomowa.service.dto.OrangeObjectCreateDto;
-import com.example.pracadomowa.service.dto.OrangeObjectUpdateDto;
+import com.example.pracadomowa.controller.model.orangeobject.OrangeObjectCreateRequest;
+import com.example.pracadomowa.controller.model.orangeobject.OrangeObjectResponse;
+import com.example.pracadomowa.controller.model.orangeobject.OrangeObjectUpdateRequest;
+import com.example.pracadomowa.service.orangeobject.OrangeObjectService;
+import com.example.pracadomowa.service.orangeobject.dto.OrangeObjectCreateDto;
+import com.example.pracadomowa.service.orangeobject.dto.OrangeObjectUpdateDto;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,18 +15,18 @@ import java.util.stream.Collectors;
 
 
 @RestController
-@RequestMapping(path = "/test")
+@RequestMapping(path = "/orange")
 @AllArgsConstructor
 public class ApiOrangeObjectController {
 
     private final OrangeObjectService orangeObjectService;
 
-    @GetMapping("/orangeobjects")
+    @GetMapping("/objects")
     public List<OrangeObjectResponse> getOrangeObjects() {
         return orangeObjectService.getAll().stream().map(OrangeObjectResponse::new).collect(Collectors.toList());
     }
 
-    @PostMapping(value = "/orangeobjects")
+    @PostMapping(value = "/objects")
     public OrangeObjectResponse create(@RequestBody OrangeObjectCreateRequest orangeObjectCreateRequest) {
 
         var dto = OrangeObjectCreateDto.builder()
@@ -41,7 +41,7 @@ public class ApiOrangeObjectController {
         return Objects.isNull(created) ? null : new OrangeObjectResponse(created);
     }
 
-    @PutMapping(value = "/orangeobjects/{id}")
+    @PutMapping(value = "/objects/{id}")
     public OrangeObjectResponse update(@RequestBody OrangeObjectUpdateRequest orangeObjectUpdateRequest, @PathVariable("id") Long id) {
 
         var dto = OrangeObjectUpdateDto.builder()
@@ -57,7 +57,7 @@ public class ApiOrangeObjectController {
         return Objects.isNull(updated) ? null : new OrangeObjectResponse(updated);
     }
 
-    @DeleteMapping(value = "/orangeobjects/{id}")
+    @DeleteMapping(value = "/objects/{id}")
     public void delete(@PathVariable("id") Long id) {
         orangeObjectService.delete(id);
     }

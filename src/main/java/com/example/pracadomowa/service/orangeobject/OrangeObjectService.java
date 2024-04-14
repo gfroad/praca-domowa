@@ -1,8 +1,8 @@
-package com.example.pracadomowa.service;
+package com.example.pracadomowa.service.orangeobject;
 
 import com.example.pracadomowa.domain.OrangeObject;
-import com.example.pracadomowa.service.dto.OrangeObjectCreateDto;
-import com.example.pracadomowa.service.dto.OrangeObjectUpdateDto;
+import com.example.pracadomowa.service.orangeobject.dto.OrangeObjectCreateDto;
+import com.example.pracadomowa.service.orangeobject.dto.OrangeObjectUpdateDto;
 
 import java.util.List;
 import java.util.Optional;

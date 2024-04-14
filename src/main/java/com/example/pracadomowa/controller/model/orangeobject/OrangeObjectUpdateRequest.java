@@ -1,10 +1,10 @@
-package com.example.pracadomowa.controller.model;
+package com.example.pracadomowa.controller.model.orangeobject;
 
 import com.example.pracadomowa.enums.ObjectType;
 import lombok.Data;
 
 @Data
-public class OrangeObjectCreateRequest {
+public class OrangeObjectUpdateRequest {
     private String name;
     private String description;
     private ObjectType type;

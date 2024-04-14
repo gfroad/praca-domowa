@@ -1,4 +1,4 @@
-package com.example.pracadomowa.service.dto;
+package com.example.pracadomowa.service.orangeobject.dto;
 
 import com.example.pracadomowa.enums.ObjectType;
 import lombok.Data;
