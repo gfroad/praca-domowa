@@ -16,7 +16,8 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="name" type="text"/>
+            <column name="login" type="text"/>
+            <column name="password" type="text"/>
         </createTable>
 
         <createTable tableName="role">
