@@ -7,8 +7,11 @@ import com.example.pracadomowa.service.orangeobject.OrangeObjectService;
 import com.example.pracadomowa.service.orangeobject.dto.OrangeObjectCreateDto;
 import com.example.pracadomowa.service.orangeobject.dto.OrangeObjectUpdateDto;
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -21,13 +24,20 @@ public class ApiOrangeObjectController {
 
     private final OrangeObjectService orangeObjectService;
 
+    @PreAuthorize("hasAuthority('DEFAULT')")
     @GetMapping("/objects")
-    public List<OrangeObjectResponse> getOrangeObjects() {
+    public List<OrangeObjectResponse> getOrangeObjects(Principal principal) {
+
+        var test = SecurityContextHolder.getContext().getAuthentication();
+
         return orangeObjectService.getAll().stream().map(OrangeObjectResponse::new).collect(Collectors.toList());
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping(value = "/objects")
     public OrangeObjectResponse create(@RequestBody OrangeObjectCreateRequest orangeObjectCreateRequest) {
+
+        var test = SecurityContextHolder.getContext().getAuthentication();
 
         var dto = OrangeObjectCreateDto.builder()
                 .name(orangeObjectCreateRequest.getName())
@@ -41,6 +51,7 @@ public class ApiOrangeObjectController {
         return Objects.isNull(created) ? null : new OrangeObjectResponse(created);
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping(value = "/objects/{id}")
     public OrangeObjectResponse update(@RequestBody OrangeObjectUpdateRequest orangeObjectUpdateRequest, @PathVariable("id") Long id) {
 
@@ -57,6 +68,7 @@ public class ApiOrangeObjectController {
         return Objects.isNull(updated) ? null : new OrangeObjectResponse(updated);
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping(value = "/objects/{id}")
     public void delete(@PathVariable("id") Long id) {
         orangeObjectService.delete(id);
